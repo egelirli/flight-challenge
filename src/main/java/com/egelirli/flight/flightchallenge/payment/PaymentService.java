@@ -36,6 +36,6 @@ public class PaymentService {
         payment.setBankResponse(response.getResultCode());
         payment.setPrice(price);
         paymentRepository.save(payment);
-        logger.info("Payment saved successfully!");
+        logger.info("Payment saved successfully price : {}!",price);
     }
 }
