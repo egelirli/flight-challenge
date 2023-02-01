@@ -1,12 +1,12 @@
-package com.egelirli.flight.flightchallenge.payment;
+package com.egelirli.flightchallenge.payment;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.egelirli.flight.flightchallenge.entity.Payment;
-import com.egelirli.flight.flightchallenge.repository.PaymentRepository;
+import com.egelirli.flightchallenge.entity.Payment;
+import com.egelirli.flightchallenge.repository.PaymentRepository;
 
 import java.math.BigDecimal;
 

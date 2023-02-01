@@ -15,6 +15,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.scheduling.annotation.EnableAsync;
 
+import com.egelirli.flightchallenge.payment.PaymentService;
+import com.egelirli.flightchallenge.payment.PaymentServiceClients;
+
 //@RunWith(SpringRunner.class)
 @EnableAutoConfiguration
 @SpringBootTest

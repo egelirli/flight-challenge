@@ -1,4 +1,4 @@
-package com.egelirli.flight.flightchallenge.entity;
+package com.egelirli.flightchallenge.entity;
 
 import java.math.BigDecimal;
 

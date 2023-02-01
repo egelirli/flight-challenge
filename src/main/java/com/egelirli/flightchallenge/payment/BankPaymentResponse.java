@@ -1,4 +1,4 @@
-package com.egelirli.flight.flightchallenge.payment;
+package com.egelirli.flightchallenge.payment;
 
 public class BankPaymentResponse {
 
