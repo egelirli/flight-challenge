@@ -1,8 +1,13 @@
 package com.egelirli.flightchallenge.entity;
 
+import java.util.List;
+
+import com.egelirli.rest.webservices.restfullwebservices.user.Post;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Flight {	 
@@ -13,18 +18,17 @@ public class Flight {
 	
 	@Id
 	private String    flightNumber;	
+	
+	
 	private String    airlineName;
 	private String    origin, destin;
+	
 	//private String    departureTime;
 	//private int       flightDuration;
+	@OneToMany(mappedBy = "flight")
+	private List<FlightSeat> seatList;
+
 	
-	
-//	public Long getFlightId() {
-//		return flightId;
-//	}
-//	public void setFlightId(Long flightId) {
-//		this.flightId = flightId;
-//	}
 	public String getFlightNumber() {
 		return flightNumber;
 	}

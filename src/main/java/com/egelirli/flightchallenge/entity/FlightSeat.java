@@ -3,7 +3,9 @@ package com.egelirli.flightchallenge.entity;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class FlightSeat {
@@ -11,7 +13,12 @@ public class FlightSeat {
 	@Id
 	private String seatNumber;
 	
-	private String flightNumber;
+//	@Id
+//	private String flightNumber;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Flight flight;
+	
 	private BigDecimal price;
 	private boolean isAvailable;
 	
@@ -21,12 +28,21 @@ public class FlightSeat {
 	public void setSeatNumber(String seatNumber) {
 		this.seatNumber = seatNumber;
 	}
-	public String getFlightNumber() {
-		return flightNumber;
+
+	
+    public void setFlight(Flight flight) {
+       this.flight = flight;	
+    }
+    
+	public Flight getFlight() {
+		return flight;
 	}
-	public void setFlightNumber(String flightNumber) {
-		this.flightNumber = flightNumber;
-	}
+//	public String getFlightNumber() {
+//		return flightNumber;
+//	}
+//	public void setFlightNumber(String flightNumber) {
+//		this.flightNumber = flightNumber;
+//	}
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -38,6 +54,12 @@ public class FlightSeat {
 	}
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
+	}
+	@Override
+	public String toString() {
+		
+		return "FlightSeat [seatNumber=" + seatNumber + ", price=" + price + ", "
+				+ "isAvailable=" + isAvailable + "]";
 	}
 	
 	
