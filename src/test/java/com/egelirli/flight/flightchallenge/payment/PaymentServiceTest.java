@@ -1,5 +1,7 @@
 package com.egelirli.flight.flightchallenge.payment;
 
+import static org.junit.Assert.assertTrue;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +24,16 @@ import com.egelirli.flightchallenge.payment.PaymentServiceClients;
 @EnableAutoConfiguration
 @SpringBootTest
 @EnableAsync
-@ExtendWith(MockitoExtension.class)
 public class PaymentServiceTest {
 	private Logger logger = LoggerFactory.getLogger(PaymentService.class);
     @Autowired
     private PaymentServiceClients paymentServiceClients;
+    
+	@Test
+	private void shouldPass() {
+		logger.debug("In shouldPass");	
+	 	assertTrue(true);
+	}
     
     @Test
     public void should_pay_with_iyzico_with_100_clients_together() {
