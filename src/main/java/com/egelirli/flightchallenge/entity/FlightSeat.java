@@ -1,7 +1,5 @@
 package com.egelirli.flightchallenge.entity;
 
-import java.math.BigDecimal;
-
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 

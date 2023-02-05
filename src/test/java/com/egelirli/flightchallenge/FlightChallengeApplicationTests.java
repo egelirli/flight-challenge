@@ -1,4 +1,4 @@
-package com.egelirli.flight.flightchallenge;
+package com.egelirli.flightchallenge;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

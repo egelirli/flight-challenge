@@ -1,4 +1,4 @@
-package com.egelirli.flight.flightchallenge.repository;
+package com.egelirli.flightchallenge.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
