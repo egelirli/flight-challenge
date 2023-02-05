@@ -96,6 +96,7 @@ public class SeatService {
 	}
 	
 	
+
 	public boolean isSeatAvailable(int  seatId) throws ResourceNotFoundException {
 		FlightSeat fs =  this.seatRepo.findById(seatId).
 				 orElseThrow(()-> 

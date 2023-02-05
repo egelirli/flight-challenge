@@ -30,7 +30,6 @@ public class Flight {
 	//@OneToMany(mappedBy = "flight")
 	
     private List<FlightSeat> seatList;
-
 	
 	public String getFlightNumber() {
 		return flightNumber;
