@@ -25,7 +25,7 @@ public class FlightSeat {
 //	private String flightNumber;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "flight_flightNumber", nullable = false)
+	@JoinColumn(name = "flightNumber", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	private Flight flight;

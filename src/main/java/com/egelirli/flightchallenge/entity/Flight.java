@@ -29,6 +29,7 @@ public class Flight {
 	//private int       flightDuration;
 	//@OneToMany(mappedBy = "flight")
 	
+    @OneToMany(mappedBy = "flight")
     private List<FlightSeat> seatList;
 	
 	public String getFlightNumber() {
@@ -75,10 +76,10 @@ public class Flight {
 		this.seatList = seatList;
 	}
 	
-//	
+	
 //	public List<FlightSeat> getAvailableSeats(){
 //		return this.seatList.stream().
-//				filter(seat -> seat.isAvailable() == true).collect(Collectors.toList());
+//				filter(seat -> seat.getAvailable() == true).collect(Collectors.toList());
 //	}
 //	
 //	public Optional<FlightSeat> findSeat(String seatNumber){

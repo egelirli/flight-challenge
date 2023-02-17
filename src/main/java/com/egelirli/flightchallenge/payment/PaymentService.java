@@ -19,7 +19,8 @@ public class PaymentService {
     private BankService bankService;
     private PaymentRepository paymentRepository;
 
-    public PaymentService(BankService bankService, PaymentRepository paymentRepository) {
+    public PaymentService(BankService bankService, 
+    					  PaymentRepository paymentRepository) {
         this.bankService = bankService;
         this.paymentRepository = paymentRepository;
     }
