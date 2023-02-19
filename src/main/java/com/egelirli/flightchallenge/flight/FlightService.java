@@ -87,7 +87,6 @@ public class FlightService {
 			logger.error("In remove - could not find  flight({}) to remove!", flightNumber);
 			return false;
 		}else {
-			
 			flightRepo.delete(fl.get());
 			seatRepo.deleteByFlightFlightNumber(flightNumber);
 			logger.debug("In remove - removed flight  and seats - flightNumber: {} ",flightNumber);
@@ -117,5 +116,7 @@ public class FlightService {
 		
 	}
 
-	
+	public void deleteAll() {
+		flightRepo.deleteAll();
+	}
 }
