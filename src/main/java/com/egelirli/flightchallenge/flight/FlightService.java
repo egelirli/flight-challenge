@@ -64,6 +64,21 @@ public class FlightService {
 		
 		return true;
 	}
+
+	
+	public boolean add(Flight newFlight) {
+		logger.debug("In add -  flight: {} ", newFlight.toString());
+
+		Optional<Flight> fl = flightRepo.findById(newFlight.getFlightNumber());
+		if (!fl.isEmpty()) {
+			logger.error("In add - flight({}) already exists !", newFlight.getFlightNumber());
+			return false;
+		}
+		flightRepo.save(newFlight);
+		logger.debug("In add - added  new flight: {} ", newFlight.toString());
+
+		return true;
+	}	
 	
 	public boolean remove(String flightNumber) {
 		
@@ -83,10 +98,11 @@ public class FlightService {
 
 	public void update(Flight flToSave) throws ResourceNotFoundException {
 		
-		Flight fl = flightRepo.findById(flToSave.getFlightNumber()).
+		flightRepo.findById(flToSave.getFlightNumber()).
 				orElseThrow(()->new ResourceNotFoundException(
 					"Flight Not Found " + flToSave.getFlightNumber()));
 		flightRepo.save(flToSave);
+		
 //		Optional<Flight> fl = flightRepo.findById(flToSave.getFlightNumber());
 //		if(fl.isEmpty()) {
 //			logger.error("In update - could not find  flight({}) to update!", 
