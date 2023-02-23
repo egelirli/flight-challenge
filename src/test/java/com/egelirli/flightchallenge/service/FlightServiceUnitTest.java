@@ -145,7 +145,6 @@ public class FlightServiceUnitTest {
 		//fail("shouldFindNoFlightNot - yet implemented 2");
 		
 		try {
-		
 			 
 			 boolean isAdded =  flightService.add(testFlight1);
 			 assertTrue(isAdded);
