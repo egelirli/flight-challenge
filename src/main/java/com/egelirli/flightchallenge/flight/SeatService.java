@@ -148,4 +148,8 @@ public class SeatService {
 		return flight;		
 		
 	}
+
+	public FlightSeat findSeat(String flightNumber, String seat1) {
+		return seatRepo.findByFlightFlightNumberAndSeatNumber(flightNumber, flightNumber);
+	}
 }
