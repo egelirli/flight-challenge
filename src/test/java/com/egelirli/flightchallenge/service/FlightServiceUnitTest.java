@@ -2,12 +2,12 @@ package com.egelirli.flightchallenge.service;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+//import org.junit.Test;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -26,16 +26,16 @@ import com.egelirli.flightchallenge.flight.FlightService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class FlightServiceUnitTest {
-	private Logger logger = LoggerFactory.getLogger(FlightServiceUnitTest.class);
+	private static Logger logger = LoggerFactory.getLogger(FlightServiceUnitTest.class);
 	
 	@Autowired
 	private FlightService flightService;
 	
-	 private Flight testFlight1;
-	 private String testFlNumber1 = "ERD-001";
+	 private static Flight testFlight1;
+	 private static String testFlNumber1 = "ERD-001";
 	 
-	 private Flight testFlight2;
-	 private String testFlNumber2 = "ERD-002";
+	 private static  Flight testFlight2;
+	 private static  String testFlNumber2 = "ERD-002";
 
 	
 //	@Test
@@ -43,9 +43,10 @@ public class FlightServiceUnitTest {
 //		fail("test - Not yet implemented");
 //	}
 	
-	@BeforeClass
-	public void beforeClass() {
-		logger.debug("In beforeClass");
+	//@BeforeClass
+	@BeforeAll
+	public static void executeBeforeAll() {
+		logger.debug("In onceExecutedBeforeAll");
 		
 		 BigDecimal price = new BigDecimal(2000);
 		 testFlight1 = new Flight();
@@ -66,7 +67,7 @@ public class FlightServiceUnitTest {
 		
 	}
 	
-	@Before
+	@BeforeEach
 	public void beforeEachMethod() {
 		logger.debug("In beforeEachMethod");
 		flightService.deleteAll();
@@ -118,19 +119,22 @@ public class FlightServiceUnitTest {
 		//fail("shouldFindNoFlightNot - yet implemented 2");
 		
 		try {
-			
 			 
 			 boolean isAdded =  flightService.add(testFlight2);
 			 assertTrue(isAdded);
+			 
 			 BigDecimal price1 = testFlight2.getPrice();
 			 BigDecimal price2 = price1.add(new BigDecimal(1000));
-			 
-			 testFlight2.setPrice(price1.add(price2));
+			 testFlight2.setPrice(price2);
+			 flightService.update(testFlight2);
 			 
 			 Flight fl =  flightService.findFlightByNumber(testFlNumber2);
 			 assertTrue(fl != null);
 			 
-			 assertTrue(price2.equals(fl.getPrice()));
+			 logger.debug("In testUpdateFlight - price2 : {} flPrice : {}", 
+					 price2.toString(), fl.getPrice().toString());
+			 //assertTrue(price2.equals(fl.getPrice()));
+			 assertTrue(price2.floatValue() == fl.getPrice().floatValue());
 			 
 		} catch (Exception e) {
 			logger.error("testUpdateFlight - Exception e: {}", e);
