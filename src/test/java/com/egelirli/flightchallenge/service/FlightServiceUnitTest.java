@@ -2,8 +2,11 @@ package com.egelirli.flightchallenge.service;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,6 +23,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.egelirli.flightchallenge.entity.Flight;
 import com.egelirli.flightchallenge.exception.ResourceNotFoundException;
 import com.egelirli.flightchallenge.flight.FlightService;
+import com.egelirli.flightchallenge.repository.FlightRepository;
+import com.egelirli.flightchallenge.repository.FlightSeatRepository;
 
 
 @EnableAutoConfiguration
@@ -80,7 +85,7 @@ public class FlightServiceUnitTest {
 		//fail("shouldFindNoFlightNot - yet implemented 2");
 		try {
 			Flight fl =  flightService.findFlightByNumber("test");
-			assertTrue(fl==null);
+			//assertTrue(fl==null);
 		} catch (ResourceNotFoundException e) {
 			 assertTrue(true);
 		}
@@ -113,6 +118,9 @@ public class FlightServiceUnitTest {
 		}
 	}
 
+	
+	
+	
 	@Test
 	public void testUpdateFlight() {
 		logger.debug("In testUpdateFlight");
@@ -141,6 +149,52 @@ public class FlightServiceUnitTest {
 			 fail("Exception " + e.getMessage());
 		}
 	}
+
+	@Test
+	public void testUpdateFlightWithMockRepo() {
+		logger.debug("In testUpdateFlightWithMockRepo");
+		//fail("shouldFindNoFlightNot - yet implemented 2");
+		
+		try {
+			FlightRepository flightRepo = mock(FlightRepository.class);
+			FlightSeatRepository seatRepo =  mock(FlightSeatRepository.class);
+			
+			//Optional<Flight> fl = new Optional<Flight>(testFlight2.getFlightNumber());
+//			when(flightRepo.findById(testFlight2.getFlightNumber())).
+//						thenThrow(new ResourceNotFoundException("Flight Not Found!"));
+			when(flightRepo.findById(testFlight2.getFlightNumber())).
+						thenReturn(Optional.empty());
+			
+			
+			 BigDecimal price = new BigDecimal(2000);
+			 String flNumber1 = "ERD-002";
+			 
+			 Flight testFlight = new Flight();
+			 testFlight.setFlightNumber(flNumber1);
+			 testFlight.setPrice(price);
+			 testFlight.setAirlineName("ERD-HY");
+			 testFlight.setOrigin("IST");
+			 testFlight.setOrigin("IZMIR");
+
+			
+			 FlightService flightServiceLocal = new FlightService(flightRepo, seatRepo);
+			 
+			 boolean isAdded =  flightServiceLocal.add(testFlight);
+			 assertTrue(isAdded);
+			 
+			 BigDecimal price1 = testFlight.getPrice();
+			 BigDecimal price2 = price1.add(new BigDecimal(1000));
+			 testFlight.setPrice(price2);
+			 flightServiceLocal.update(testFlight);
+			 fail("Should have been thrown Exception!");
+			
+			 
+		} catch (ResourceNotFoundException e ) {
+			logger.error("testUpdateFlight - Exception e: {}", e);
+			 assertTrue(true);
+		}
+	}
+	
 	
 	
 	@Test

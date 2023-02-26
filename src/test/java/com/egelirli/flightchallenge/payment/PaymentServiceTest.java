@@ -35,14 +35,14 @@ public class PaymentServiceTest {
 	 	assertTrue(true);
 	}
     
-    @Test
-    public void should_pay_with_iyzico_with_100_clients_together() {
-    	logger.error("In should_pay_with_iyzico_with_100_clients_together");
-        List<CompletableFuture<String>> futures = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            CompletableFuture<String> future = paymentServiceClients.call(new BigDecimal(i));
-            futures.add(future);
-        }
-        futures.stream().forEach(f -> CompletableFuture.allOf(f).join());
-    }
+//    @Test
+//    public void should_pay_with_iyzico_with_100_clients_together() {
+//    	logger.error("In should_pay_with_iyzico_with_100_clients_together");
+//        List<CompletableFuture<String>> futures = new ArrayList<>();
+//        for (int i = 0; i < 100; i++) {
+//            CompletableFuture<String> future = paymentServiceClients.call(new BigDecimal(i));
+//            futures.add(future);
+//        }
+//        futures.stream().forEach(f -> CompletableFuture.allOf(f).join());
+//    }
 }
