@@ -80,6 +80,7 @@ class SeatServiceUnitTest {
 		
 		flightService.add(testFlight1);
 		String  seat1 = "1A", seat2= "1B", seat3 = "1C";
+
 		try {
 			FlightSeat fs = seatService.addSeat(testFlight1.getFlightNumber(), seat1);
 			if(fs != null) {
