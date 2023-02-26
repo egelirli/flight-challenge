@@ -31,7 +31,7 @@ public class SeatService {
 		this.flightRepo = flightRepo;
 	}
 	
-	public boolean addSeat(String flightNumber, 
+	public FlightSeat addSeat(String flightNumber, 
 						   String seatNumber) {
 		logger.debug("In addSeat -  flightNumber: {} seatNumber: {}"
 				 , flightNumber, seatNumber);
@@ -39,7 +39,7 @@ public class SeatService {
 		Optional<Flight> flight = flightRepo.findById(flightNumber);
 		if(flight.isEmpty()) {
 				logger.error("In addSeat - flight({}) not exists !", flightNumber);
-				return false;
+				return null;
 		 }
 
 //		Optional<FlightSeat> st = flight.get().findSeat(seatNumber);
@@ -53,12 +53,19 @@ public class SeatService {
 		seat.setFlight(flight.get());
 		seat.setSeatNumber(seatNumber);
 		seat.setAvailable(true);
-		seatRepo.save(seat);
 		
-		logger.debug("In addSeat - added new seat flightNumber: {} "
-				+ "seatNumber: {}", flightNumber, seatNumber);
+		FlightSeat newSeat =  seatRepo.save(seat);
+		if(newSeat != null) {
+			logger.debug("In addSeat - added new seat seatId : {} flightNumber: {} "
+					+ "seatNumber: {}",newSeat.getId(), flightNumber, seatNumber);
+			
+		}else {
+			logger.error("In addSeat - Error adding new seat : flightNumber: {} "
+					+ "seatNumber: {}", flightNumber, seatNumber);
+			
+		}
 		
-		return true;
+		return newSeat;
 		
 		
 	}
@@ -81,7 +88,7 @@ public class SeatService {
 //	
 //	}
 
-	public  void updateSeat(int  seatId, 
+	public  FlightSeat updateSeat(int  seatId, 
 							boolean isAvailable) throws ResourceNotFoundException {
 		
 		logger.debug("In updateSeat - seatId: {} "
@@ -92,7 +99,7 @@ public class SeatService {
 		
 		//fs.setPrice(price);
 		fs.setAvailable(isAvailable);
-		this.seatRepo.save(fs);
+		return this.seatRepo.save(fs);
 	}
 	
 	
@@ -115,7 +122,7 @@ public class SeatService {
 
 	}
 	
-	public void removeAllSeatsOfFlight(String flightNumber) 
+	public void deleteAllSeatsOfFlight(String flightNumber) 
 								throws ResourceNotFoundException {
 		logger.debug("In removeAllSeatsOfFlight - flightNumber: {}", flightNumber);
 		if(!this.flightRepo.existsById(flightNumber)) {
@@ -151,5 +158,15 @@ public class SeatService {
 
 	public FlightSeat findSeat(String flightNumber, String seat1) {
 		return seatRepo.findByFlightFlightNumberAndSeatNumber(flightNumber, flightNumber);
+	}
+
+	public void deleteAll() {
+		seatRepo.deleteAll();
+		
+	}
+
+	public Optional<FlightSeat> findById(int id) {
+		// TODO Auto-generated method stub
+		return seatRepo.findById(id);
 	}
 }
