@@ -68,6 +68,7 @@ public class FlightReservationServiceUnitTest {
 	public void testReserveSeat() {
 		logger.debug("In testReserveSeat ");
 		
+		assertTrue(seatService.reserveSeat(testFlight1.));
 		
 		
 	}
