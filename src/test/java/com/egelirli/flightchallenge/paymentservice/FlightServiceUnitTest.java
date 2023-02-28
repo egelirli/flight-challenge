@@ -1,4 +1,4 @@
-package com.egelirli.flightchallenge.service;
+package com.egelirli.flightchallenge.paymentservice;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -22,7 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.egelirli.flightchallenge.entity.Flight;
 import com.egelirli.flightchallenge.exception.ResourceNotFoundException;
-import com.egelirli.flightchallenge.flight.FlightService;
+import com.egelirli.flightchallenge.flightservice.FlightService;
 import com.egelirli.flightchallenge.repository.FlightRepository;
 import com.egelirli.flightchallenge.repository.FlightSeatRepository;
 

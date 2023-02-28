@@ -1,4 +1,4 @@
-package com.egelirli.flightchallenge.flight;
+package com.egelirli.flightchallenge.flightservice;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.egelirli.flightchallenge.service;
+package com.egelirli.flightchallenge.paymentservice;
 
 import static org.junit.Assert.*;
 
@@ -18,9 +18,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.egelirli.flightchallenge.entity.Flight;
 import com.egelirli.flightchallenge.entity.FlightSeat;
 import com.egelirli.flightchallenge.exception.ResourceNotFoundException;
-import com.egelirli.flightchallenge.flight.FlightReservationService;
-import com.egelirli.flightchallenge.flight.FlightService;
-import com.egelirli.flightchallenge.flight.SeatService;
+import com.egelirli.flightchallenge.flightservice.FlightReservationService;
+import com.egelirli.flightchallenge.flightservice.FlightService;
+import com.egelirli.flightchallenge.flightservice.SeatService;
 
 @EnableAutoConfiguration
 @RunWith(SpringRunner.class)

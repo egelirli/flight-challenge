@@ -1,4 +1,4 @@
-package com.egelirli.flightchallenge.flight;
+package com.egelirli.flightchallenge.flightservice;
 
 import java.util.List;
 import java.util.Optional;
