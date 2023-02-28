@@ -32,7 +32,7 @@ public class FlightReservationService {
 	
 	public synchronized boolean reserveSeat(String flightNumber, 
 								            int seatId) throws ResourceNotFoundException {
-		logger.debug("In reserveSeat - seatId : {}", seatId);
+		logger.debug("In reserveSeat - flightNumber: {} seatId : {}",flightNumber, seatId);
 		
 		Flight fl = flightService.findFlightByNumber(flightNumber);
 		
