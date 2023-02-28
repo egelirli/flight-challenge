@@ -39,8 +39,8 @@ class SeatServiceUnitTest {
 	 private static Flight testFlight1;
 	 private static String testFlNumber1 = "ERD-101";
 	 
-	 private static  Flight testFlight2;
-	 private static  String testFlNumber2 = "ERD-102";
+//	 private static  Flight testFlight2;
+//	 private static  String testFlNumber2 = "ERD-102";
 
 	 
 	@BeforeAll
@@ -56,13 +56,13 @@ class SeatServiceUnitTest {
 		 testFlight1.setOrigin("IZMIR");
 		 
 		 
-		 BigDecimal price2 = new BigDecimal(1000);
-		 testFlight2 = new Flight();
-		 testFlight2.setFlightNumber(testFlNumber2);
-		 testFlight2.setPrice(price2);
-		 testFlight2.setAirlineName("ERD-HY");
-		 testFlight2.setOrigin("IST");
-		 testFlight2.setOrigin("ANK");
+//		 BigDecimal price2 = new BigDecimal(1000);
+//		 testFlight2 = new Flight();
+//		 testFlight2.setFlightNumber(testFlNumber2);
+//		 testFlight2.setPrice(price2);
+//		 testFlight2.setAirlineName("ERD-HY");
+//		 testFlight2.setOrigin("IST");
+//		 testFlight2.setOrigin("ANK");
  
 	}
 	
@@ -254,7 +254,7 @@ class SeatServiceUnitTest {
 			FlightSeat fs = seatService.addSeat(testFlight1.getFlightNumber(), seat1);
 			if(fs != null) {
 				assertTrue(fs.getSeatNumber().equals(seat1));
-				assertTrue(!seatService.isSeatAvailable(fs.getId()));
+				assertTrue(seatService.isSeatAvailable(fs.getId()));
 			}else {
 				fail("Could not add new seat!");
 			}
