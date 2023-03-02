@@ -119,4 +119,9 @@ public class FlightService {
 	public void deleteAll() {
 		flightRepo.deleteAll();
 	}
+
+	public List<Flight> getAllFlights() {
+		
+		return flightRepo.findAll();
+	}
 }
