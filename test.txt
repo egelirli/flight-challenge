@@ -1,0 +1,19 @@
+
+Flight Json
+{
+"flightNumber": "ERD-002",
+"airlineName": "EHY",
+"origin": "IST",
+"destin": "AMSTRDM",
+"price": 2000.00,
+"seatList":[]
+}
+
+
+FlightSeat Json
+{
+"Id": 10001,
+"flightNumber": "ERD-001",
+"isAvaialable": "true",
+"seatNumber": "A1",
+}

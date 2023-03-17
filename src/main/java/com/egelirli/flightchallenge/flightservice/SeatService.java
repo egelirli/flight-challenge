@@ -139,9 +139,16 @@ public class SeatService {
 				orElseThrow(()->new ResourceNotFoundException(
 					"Flight Not Found " + flightNumber));
 	
-		return this.seatRepo.findByIsAvailable(true);
+		return this.seatRepo.findByFlightFlightNumberAndIsAvailable(flightNumber, true);
 	}
 	
+	public List<FlightSeat> getAllSeats(String flightNumber) throws ResourceNotFoundException {
+		logger.debug("In getAllSeats - flightNumber: {}", flightNumber);
+		flightRepo.findById(flightNumber)
+				.orElseThrow(() -> new ResourceNotFoundException("Flight Not Found " + flightNumber));
+
+		return this.seatRepo.findByFlightFlightNumber(flightNumber);
+	}
 	
 //	public Flight getFlightWithAvailableSeats(String flightNumber) 
 //										throws ResourceNotFoundException{

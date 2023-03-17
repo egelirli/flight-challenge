@@ -12,10 +12,13 @@ public interface FlightSeatRepository extends JpaRepository<FlightSeat, Integer>
 	
 	List<FlightSeat> findByIsAvailable(boolean isAvailable);
 
-	List<FlightSeat> findByFlightFlightNumber(boolean isAvailable);
+	List<FlightSeat> findByFlightFlightNumber(String flightNumber);
 	
+	List<FlightSeat> findByFlightFlightNumberAndIsAvailable(
+			String flightNumber, boolean isAvailable);
 	FlightSeat findByFlightFlightNumberAndSeatNumber(
 							String flightNumber, String seatNumber);
+
 	
 	@Transactional
 	void deleteByFlightFlightNumber(String flightNumber);

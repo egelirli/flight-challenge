@@ -1,4 +1,4 @@
-package com.egelirli.flightchallenge.paymentservice;
+package com.egelirli.flightchallenge.flightservice;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -39,8 +39,8 @@ class SeatServiceUnitTest {
 	 private static Flight testFlight1;
 	 private static String testFlNumber1 = "ERD-101";
 	 
-//	 private static  Flight testFlight2;
-//	 private static  String testFlNumber2 = "ERD-102";
+	 private static  Flight testFlight2;
+	 private static  String testFlNumber2 = "ERD-102";
 
 	 
 	@BeforeAll
@@ -56,13 +56,13 @@ class SeatServiceUnitTest {
 		 testFlight1.setOrigin("IZMIR");
 		 
 		 
-//		 BigDecimal price2 = new BigDecimal(1000);
-//		 testFlight2 = new Flight();
-//		 testFlight2.setFlightNumber(testFlNumber2);
-//		 testFlight2.setPrice(price2);
-//		 testFlight2.setAirlineName("ERD-HY");
-//		 testFlight2.setOrigin("IST");
-//		 testFlight2.setOrigin("ANK");
+		 BigDecimal price2 = new BigDecimal(1000);
+		 testFlight2 = new Flight();
+		 testFlight2.setFlightNumber(testFlNumber2);
+		 testFlight2.setPrice(price2);
+		 testFlight2.setAirlineName("ERD-HY");
+		 testFlight2.setOrigin("IST");
+		 testFlight2.setOrigin("ANK");
  
 	}
 	
@@ -215,6 +215,7 @@ class SeatServiceUnitTest {
 			flightService.add(testFlight1);
 			String  seat1 = "1A", seat2= "1B", seat3 = "1C";
 			
+			
 			FlightSeat fs1 = 
 					seatService.addSeat(testFlight1.getFlightNumber(), seat1);
 			FlightSeat fs2 = 
@@ -222,10 +223,15 @@ class SeatServiceUnitTest {
 			FlightSeat fs3 = 
 					seatService.addSeat(testFlight1.getFlightNumber(), seat3);
 			
-			
 			assertNotNull(fs1);
 			assertNotNull(fs2);
 			assertNotNull(fs3);
+
+			flightService.add(testFlight2);
+			String  seat21 = "1X", seat22= "1Y", seat23 = "1Z";
+			seatService.addSeat(testFlight2.getFlightNumber(), seat21);
+			seatService.addSeat(testFlight2.getFlightNumber(), seat22);
+			seatService.addSeat(testFlight2.getFlightNumber(), seat23);
 			
 			if((fs1 != null) && (fs2 != null) && (fs3 != null) ) {
 				//flightSeat.setAvailable(false);

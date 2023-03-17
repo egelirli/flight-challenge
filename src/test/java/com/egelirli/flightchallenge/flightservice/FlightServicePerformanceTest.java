@@ -1,4 +1,4 @@
-package com.egelirli.flightchallenge.paymentservice;
+package com.egelirli.flightchallenge.flightservice;
 
 import static org.junit.Assert.assertTrue;
 
