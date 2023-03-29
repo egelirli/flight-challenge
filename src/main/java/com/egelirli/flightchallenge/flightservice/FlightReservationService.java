@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.egelirli.flightchallenge.entity.Flight;
+import com.egelirli.flightchallenge.entity.FlightSeat;
 import com.egelirli.flightchallenge.exception.ResourceNotFoundException;
 import com.egelirli.flightchallenge.payment.PaymentService;
 
@@ -44,6 +45,18 @@ public class FlightReservationService {
 			logger.warn("In reserveSeat - Seat is not available -  seatId : {}", seatId);
 			return false;
 		}
+		
+	}
+
+
+	public boolean reserveSeat(String flightNumber, String seatNum) 
+											throws ResourceNotFoundException {
+		logger.debug("In reserveSeat - flightNumber: {} seatNum : {}",
+														flightNumber, seatNum);
+		
+		FlightSeat seat = seatService.findSeat(flightNumber, seatNum);
+		
+		return reserveSeat(flightNumber, seat.getId());
 		
 	}
 }

@@ -58,5 +58,5 @@ public class SeatController {
 		 seatService.deleteAllSeatsOfFlight(flightNumber);
 	 }
 	
-
+	
 }
